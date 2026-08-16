@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -24,9 +20,7 @@ html {
 
 body {
     min-height: 100vh;
-
-    color: #ffffff;
-
+    color: white;
     background: #050508;
 
     font-family:
@@ -41,55 +35,29 @@ body {
     overflow-x: hidden;
 }
 
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
 :root {
-
     --background: #050508;
+    --purple: #8d7cff;
+    --purple-light: #b5aaff;
 
-    --panel:
-        rgba(255,255,255,.055);
-
-    --panel-hover:
-        rgba(255,255,255,.085);
-
-    --border:
-        rgba(255,255,255,.09);
-
-    --purple:
-        #8d7cff;
-
-    --purple-light:
-        #b5aaff;
-
-    --text-muted:
+    --muted:
         rgba(255,255,255,.45);
 
-    --text-dim:
+    --dim:
         rgba(255,255,255,.28);
-
 }
 
 
 /* =========================================================
-   ANIMATED BACKGROUND
+   BACKGROUND
 ========================================================= */
 
 .background {
-
     position: fixed;
-
     inset: 0;
-
     z-index: -20;
 
-    overflow: hidden;
-
     background:
-
         radial-gradient(
             circle at 10% 10%,
             rgba(113,82,255,.22),
@@ -109,11 +77,11 @@ body {
         ),
 
         #050508;
+
+    overflow: hidden;
 }
 
-
 .background::before {
-
     content: "";
 
     position: absolute;
@@ -139,9 +107,7 @@ body {
         floatingOrb1 18s ease-in-out infinite alternate;
 }
 
-
 .background::after {
-
     content: "";
 
     position: absolute;
@@ -167,7 +133,6 @@ body {
         floatingOrb2 21s ease-in-out infinite alternate;
 }
 
-
 @keyframes floatingOrb1 {
 
     0% {
@@ -187,9 +152,7 @@ body {
             translate(850px,-50px)
             scale(.9);
     }
-
 }
-
 
 @keyframes floatingOrb2 {
 
@@ -210,18 +173,15 @@ body {
             translate(-150px,-600px)
             scale(.85);
     }
-
 }
 
 
 /* =========================================================
-   STAR FIELD
+   STARS
 ========================================================= */
 
 .stars {
-
     position: fixed;
-
     inset: 0;
 
     z-index: -19;
@@ -264,7 +224,6 @@ body {
         starsMove 45s linear infinite;
 }
 
-
 @keyframes starsMove {
 
     from {
@@ -276,7 +235,6 @@ body {
         transform:
             translateY(-350px);
     }
-
 }
 
 
@@ -311,7 +269,8 @@ body {
         rgba(5,5,8,.68);
 
     border-bottom:
-        1px solid rgba(255,255,255,.07);
+        1px solid
+        rgba(255,255,255,.07);
 
     backdrop-filter:
         blur(24px);
@@ -319,7 +278,6 @@ body {
     -webkit-backdrop-filter:
         blur(24px);
 }
-
 
 .logo {
 
@@ -330,14 +288,10 @@ body {
     letter-spacing: -1.5px;
 }
 
-
 .logo span {
-
     color:
         var(--purple);
-
 }
-
 
 .status {
 
@@ -357,11 +311,9 @@ body {
     letter-spacing: 1.5px;
 }
 
-
 .status-dot {
 
     width: 7px;
-
     height: 7px;
 
     border-radius: 50%;
@@ -377,7 +329,6 @@ body {
         statusPulse 2s infinite;
 }
 
-
 @keyframes statusPulse {
 
     0%,
@@ -388,7 +339,6 @@ body {
     50% {
         opacity: .45;
     }
-
 }
 
 
@@ -414,7 +364,6 @@ body {
         75px 20px 50px;
 }
 
-
 .badge {
 
     display: inline-flex;
@@ -429,9 +378,11 @@ body {
     margin-bottom: 25px;
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
-    border-radius: 100px;
+    border-radius:
+        100px;
 
     background:
         rgba(255,255,255,.045);
@@ -444,12 +395,7 @@ body {
     font-weight: 700;
 
     letter-spacing: .5px;
-
-    box-shadow:
-        0 10px 40px
-        rgba(0,0,0,.15);
 }
-
 
 .hero h1 {
 
@@ -467,7 +413,6 @@ body {
     font-weight: 900;
 
     background:
-
         linear-gradient(
             110deg,
             #ffffff 10%,
@@ -489,12 +434,7 @@ body {
 
     animation:
         titleShine 6s linear infinite;
-
-    text-shadow:
-        0 20px 80px
-        rgba(120,100,255,.12);
 }
-
 
 @keyframes titleShine {
 
@@ -502,9 +442,7 @@ body {
         background-position:
             220% center;
     }
-
 }
-
 
 .hero p {
 
@@ -537,7 +475,6 @@ body {
         0 auto 38px;
 }
 
-
 .search-icon {
 
     position: absolute;
@@ -557,7 +494,6 @@ body {
     pointer-events: none;
 }
 
-
 #search {
 
     width: 100%;
@@ -571,7 +507,8 @@ body {
         1px solid
         rgba(255,255,255,.1);
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
     outline: none;
 
@@ -585,25 +522,15 @@ body {
     backdrop-filter:
         blur(20px);
 
-    -webkit-backdrop-filter:
-        blur(20px);
-
-    box-shadow:
-        0 15px 50px
-        rgba(0,0,0,.12);
-
     transition:
         .25s ease;
 }
-
 
 #search::placeholder {
 
     color:
         rgba(255,255,255,.28);
-
 }
-
 
 #search:focus {
 
@@ -621,7 +548,6 @@ body {
         rgba(0,0,0,.2);
 }
 
-
 #search.disabled {
 
     opacity: .45;
@@ -631,7 +557,7 @@ body {
 
 
 /* =========================================================
-   CATEGORY BAR
+   CATEGORIES
 ========================================================= */
 
 .category-area {
@@ -646,7 +572,6 @@ body {
         0 auto 35px;
 }
 
-
 .categories {
 
     display: flex;
@@ -659,12 +584,7 @@ body {
         3px 2px 12px;
 
     scrollbar-width: thin;
-
-    scrollbar-color:
-        rgba(255,255,255,.12)
-        transparent;
 }
-
 
 .category {
 
@@ -678,7 +598,8 @@ body {
         1px solid
         rgba(255,255,255,.08);
 
-    border-radius: 11px;
+    border-radius:
+        11px;
 
     background:
         rgba(255,255,255,.035);
@@ -696,7 +617,6 @@ body {
         .2s ease;
 }
 
-
 .category:hover {
 
     color: white;
@@ -711,7 +631,6 @@ body {
         translateY(-1px);
 }
 
-
 .category.active {
 
     color: white;
@@ -725,15 +644,11 @@ body {
 
     border-color:
         rgba(141,124,255,.45);
-
-    box-shadow:
-        0 8px 25px
-        rgba(100,80,255,.08);
 }
 
 
 /* =========================================================
-   GAME SECTION
+   GAMES
 ========================================================= */
 
 .games {
@@ -751,7 +666,6 @@ body {
         100px;
 }
 
-
 .section-header {
 
     display: flex;
@@ -763,7 +677,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 .section-title {
 
     font-size: 21px;
@@ -772,7 +685,6 @@ body {
 
     letter-spacing: -.5px;
 }
-
 
 .game-count {
 
@@ -820,10 +732,10 @@ body {
         1px solid
         rgba(255,255,255,.075);
 
-    border-radius: 19px;
+    border-radius:
+        19px;
 
     background:
-
         linear-gradient(
             145deg,
             rgba(255,255,255,.075),
@@ -837,41 +749,11 @@ body {
     backdrop-filter:
         blur(15px);
 
-    -webkit-backdrop-filter:
-        blur(15px);
-
-    transform:
-        translateY(0);
-
     transition:
         transform .3s ease,
         border-color .3s ease,
         box-shadow .3s ease;
 }
-
-
-.game-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.08),
-            transparent 35%
-        );
-
-    opacity: .45;
-}
-
 
 .game-card:hover {
 
@@ -882,7 +764,6 @@ body {
         rgba(141,124,255,.42);
 
     box-shadow:
-
         0 25px 60px
         rgba(0,0,0,.35),
 
@@ -892,7 +773,7 @@ body {
 
 
 /* =========================================================
-   THUMBNAIL
+   REAL GAME THUMBNAIL
 ========================================================= */
 
 .thumbnail {
@@ -901,19 +782,14 @@ body {
 
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    aspect-ratio:
+        16 / 9;
 
     overflow: hidden;
 
     background:
-
-        linear-gradient(
-            135deg,
-            #11111b,
-            #211c3b
-        );
+        #11111a;
 }
-
 
 .thumbnail img {
 
@@ -921,29 +797,31 @@ body {
 
     height: 100%;
 
-    object-fit: cover;
-
     display: block;
 
-    opacity: .86;
+    object-fit: cover;
+
+    opacity: 0;
 
     transition:
-        transform .45s ease,
-        opacity .35s ease;
+        opacity .35s ease,
+        transform .5s ease;
 }
 
-
-.game-card:hover
-.thumbnail img {
-
-    transform:
-        scale(1.08);
+.thumbnail img.loaded {
 
     opacity: 1;
 }
 
+.game-card:hover
+.thumbnail img.loaded {
 
-/* Thumbnail gradient */
+    transform:
+        scale(1.08);
+}
+
+
+/* Image shine */
 
 .thumbnail::after {
 
@@ -953,21 +831,22 @@ body {
 
     inset: 0;
 
-    background:
+    pointer-events: none;
 
+    background:
         linear-gradient(
             to bottom,
-            transparent 35%,
+            transparent 45%,
             rgba(0,0,0,.55)
         );
-
-    pointer-events: none;
 }
 
 
-/* Image loading fallback */
+/* =========================================================
+   THUMBNAIL LOADING
+========================================================= */
 
-.thumbnail-fallback {
+.thumbnail-loading {
 
     position: absolute;
 
@@ -979,26 +858,35 @@ body {
 
     justify-content: center;
 
-    font-size: 42px;
-
-    font-weight: 900;
-
-    color:
-        rgba(255,255,255,.12);
-
     background:
-
-        radial-gradient(
-            circle at 30% 30%,
-            rgba(141,124,255,.25),
-            transparent 50%
-        ),
-
         linear-gradient(
             135deg,
-            #11111b,
+            #11111a,
             #211c3b
         );
+
+    z-index: 1;
+}
+
+.thumbnail-loading::after {
+
+    content: "";
+
+    width: 24px;
+
+    height: 24px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.12);
+
+    border-top-color:
+        var(--purple);
+
+    border-radius: 50%;
+
+    animation:
+        spin .8s linear infinite;
 }
 
 
@@ -1008,12 +896,9 @@ body {
 
 .game-info {
 
-    position: relative;
-
     padding:
         15px 16px 16px;
 }
-
 
 .game-category {
 
@@ -1038,48 +923,56 @@ body {
 
     font-weight: 800;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
-    letter-spacing: .8px;
+    letter-spacing:
+        .8px;
 }
-
 
 .game-name {
 
     font-size: 16px;
 
-    line-height: 1.2;
+    line-height:
+        1.2;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    text-overflow: ellipsis;
+    text-overflow:
+        ellipsis;
 
     margin-bottom:
         6px;
 }
 
-
 .game-desc {
 
-    height: 31px;
+    height:
+        31px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     color:
         rgba(255,255,255,.32);
 
-    font-size: 10px;
+    font-size:
+        10px;
 
-    line-height: 1.5;
+    line-height:
+        1.5;
 
     margin-bottom:
         13px;
 }
-
 
 .play {
 
@@ -1090,24 +983,27 @@ body {
 
     border: none;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     background:
-        #ffffff;
+        white;
 
     color:
         #07070a;
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         .2s ease;
 }
-
 
 .play:hover {
 
@@ -1117,13 +1013,6 @@ body {
     box-shadow:
         0 8px 25px
         rgba(255,255,255,.12);
-}
-
-
-.play:active {
-
-    transform:
-        scale(.98);
 }
 
 
@@ -1146,12 +1035,13 @@ body {
         rgba(255,255,255,.35);
 }
 
-
 .loader {
 
-    width: 34px;
+    width:
+        34px;
 
-    height: 34px;
+    height:
+        34px;
 
     margin:
         0 auto 17px;
@@ -1163,12 +1053,12 @@ body {
     border-top-color:
         var(--purple);
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     animation:
         spin .8s linear infinite;
 }
-
 
 @keyframes spin {
 
@@ -1176,7 +1066,6 @@ body {
         transform:
             rotate(360deg);
     }
-
 }
 
 
@@ -1186,7 +1075,8 @@ body {
 
 .no-results {
 
-    display: none;
+    display:
+        none;
 
     text-align:
         center;
@@ -1197,7 +1087,6 @@ body {
     color:
         rgba(255,255,255,.3);
 }
-
 
 .no-results h2 {
 
@@ -1230,9 +1119,6 @@ footer {
 
     font-size:
         10px;
-
-    letter-spacing:
-        .3px;
 }
 
 
@@ -1242,40 +1128,50 @@ footer {
 
 #gameViewer {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 999999;
+    z-index:
+        999999;
 
-    width: 100vw;
+    width:
+        100vw;
 
-    height: 100vh;
+    height:
+        100vh;
 
-    display: none;
+    display:
+        none;
 
     background:
         #000;
 }
 
-
 #gameViewer.active {
 
-    display: block;
+    display:
+        block;
 }
-
 
 #gameFrame {
 
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
-    width: 100%;
+    width:
+        100%;
 
-    height: 100%;
+    height:
+        100%;
 
-    border: none;
+    border:
+        none;
 
     background:
         #000;
@@ -1288,13 +1184,17 @@ footer {
 
 #backButton {
 
-    position: fixed;
+    position:
+        fixed;
 
-    top: 14px;
+    top:
+        14px;
 
-    left: 14px;
+    left:
+        14px;
 
-    z-index: 1000000;
+    z-index:
+        1000000;
 
     padding:
         8px 12px;
@@ -1331,12 +1231,10 @@ footer {
         .2s ease;
 }
 
-
 #backButton:hover {
 
     opacity:
         1;
-
 }
 
 
@@ -1344,39 +1242,27 @@ footer {
    MOBILE
 ========================================================= */
 
-@media(max-width: 700px) {
+@media(max-width:700px) {
 
     .navbar {
-
         padding:
             0 20px;
-
     }
-
 
     .status {
-
         display:
             none;
-
     }
-
 
     .hero {
-
         min-height:
             350px;
-
     }
-
 
     .hero h1 {
-
         letter-spacing:
             -5px;
-
     }
-
 
     .game-grid {
 
@@ -1391,61 +1277,32 @@ footer {
 
         gap:
             12px;
-
     }
-
 
     .game-card {
-
         border-radius:
             15px;
-
     }
-
 
     .game-info {
-
         padding:
             12px;
-
     }
-
 
     .game-name {
-
         font-size:
             14px;
-
     }
-
 
     .game-desc {
-
         font-size:
             9px;
-
     }
-
 
     .play {
-
         padding:
             9px;
-
     }
-
-}
-
-
-@media(max-width: 430px) {
-
-    .game-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
 }
 
 </style>
@@ -1455,17 +1312,13 @@ footer {
 <body>
 
 
-<!-- =========================================================
-     BACKGROUND
-========================================================= -->
-
 <div class="background"></div>
 
 <div class="stars"></div>
 
 
 <!-- =========================================================
-     NAVIGATION
+     NAVBAR
 ========================================================= -->
 
 <nav class="navbar">
@@ -1508,7 +1361,7 @@ footer {
 
     <p>
 
-        Powered by UBGHyper
+        Powered by UBGHyper. Made by the god of the Sun.
 
     </p>
 
@@ -1522,22 +1375,15 @@ footer {
 <div class="search-wrap">
 
     <div class="search-icon">
-
         ⌕
-
     </div>
 
 
     <input
-
         id="search"
-
         type="text"
-
         placeholder="Search all games..."
-
         autocomplete="off"
-
     >
 
 </div>
@@ -1550,57 +1396,40 @@ footer {
 <div class="category-area">
 
     <div
-
         class="categories"
-
         id="categories"
-
     ></div>
 
 </div>
 
 
 <!-- =========================================================
-     GAME AREA
+     GAMES
 ========================================================= -->
 
 <section class="games">
 
-
     <div class="section-header">
 
-
         <div
-
             class="section-title"
-
             id="sectionTitle"
-
         >
-
             All Games
-
         </div>
 
 
         <div
-
             class="game-count"
-
             id="gameCount"
-
         ></div>
-
 
     </div>
 
 
     <div
-
         class="game-grid"
-
         id="gameGrid"
-
     >
 
         <div class="loading">
@@ -1615,35 +1444,22 @@ footer {
 
 
     <div
-
         class="no-results"
-
         id="noResults"
-
     >
 
         <h2>
-
             No games found
-
         </h2>
 
-
         <p>
-
             Try another search.
-
         </p>
 
     </div>
 
-
 </section>
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
 
 <footer>
 
@@ -1658,7 +1474,6 @@ footer {
 
 <div id="gameViewer">
 
-
     <button id="backButton">
 
         ← Back to NOVA
@@ -1667,23 +1482,19 @@ footer {
 
 
     <iframe
-
         id="gameFrame"
-
         allow="fullscreen"
-
         allowfullscreen
-
     ></iframe>
-
 
 </div>
 
 
 <script>
 
+
 /* =========================================================
-   GAME DATABASE
+   UBGHYPER DATABASE
 ========================================================= */
 
 const GAME_DATABASE =
@@ -1734,48 +1545,40 @@ const categoryBox =
         "categories"
     );
 
-
 const gameGrid =
     document.getElementById(
         "gameGrid"
     );
-
 
 const gameCount =
     document.getElementById(
         "gameCount"
     );
 
-
 const sectionTitle =
     document.getElementById(
         "sectionTitle"
     );
-
 
 const search =
     document.getElementById(
         "search"
     );
 
-
 const noResults =
     document.getElementById(
         "noResults"
     );
-
 
 const viewer =
     document.getElementById(
         "gameViewer"
     );
 
-
 const frame =
     document.getElementById(
         "gameFrame"
     );
-
 
 const backButton =
     document.getElementById(
@@ -1797,34 +1600,31 @@ let searching = false;
 
 
 /* =========================================================
-   CATEGORY BUTTONS
+   CREATE CATEGORY BUTTONS
 ========================================================= */
 
 CATEGORIES.forEach(category => {
-
 
     const button =
         document.createElement(
             "button"
         );
 
-
     button.className =
         "category";
-
 
     button.textContent =
         category;
 
-
-    if (category === "All") {
+    if (
+        category === "All"
+    ) {
 
         button.classList.add(
             "active"
         );
 
     }
-
 
     button.addEventListener(
         "click",
@@ -1837,7 +1637,6 @@ CATEGORIES.forEach(category => {
         }
     );
 
-
     categoryBox.appendChild(
         button
     );
@@ -1846,27 +1645,29 @@ CATEGORIES.forEach(category => {
 
 
 /* =========================================================
-   LOAD GAME LIBRARY
+   LOAD ALL GAMES
 ========================================================= */
 
 async function loadGames() {
 
     try {
 
-
         const response =
             await fetch(
                 GAME_DATABASE,
                 {
-                    cache: "no-store"
+                    cache:
+                        "no-store"
                 }
             );
 
 
-        if (!response.ok) {
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
-                "Could not load game database."
+                "Game database unavailable."
             );
 
         }
@@ -1902,8 +1703,9 @@ async function loadGames() {
 
     } catch(error) {
 
-
-        console.error(error);
+        console.error(
+            error
+        );
 
 
         gameGrid.innerHTML = `
@@ -1934,64 +1736,64 @@ async function loadGames() {
 
 
 /* =========================================================
-   SELECT CATEGORY
+   CATEGORY SELECTION
 ========================================================= */
 
-function selectCategory(category) {
-
+function selectCategory(
+    category
+) {
 
     currentCategory =
         category;
 
-
     lastCategory =
         category;
-
 
     searching =
         false;
 
-
     search.value =
         "";
 
-
     search.disabled =
         category !== "All";
-
 
     search.classList.toggle(
         "disabled",
         category !== "All"
     );
 
-
     search.placeholder =
 
         category === "All"
 
-            ? "Search all games..."
+            ?
 
-            : "Search is available in All";
+        "Search all games..."
+
+            :
+
+        "Search is available in All";
 
 
     document
         .querySelectorAll(
             ".category"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
+                button.classList.toggle(
 
-            button.classList.toggle(
+                    "active",
 
-                "active",
+                    button.textContent ===
+                    category
 
-                button.textContent ===
-                category
+                );
 
-            );
-
-        });
+            }
+        );
 
 
     renderGames();
@@ -2001,7 +1803,8 @@ function selectCategory(category) {
 
         top: 0,
 
-        behavior: "smooth"
+        behavior:
+            "smooth"
 
     });
 
@@ -2009,43 +1812,50 @@ function selectCategory(category) {
 
 
 /* =========================================================
-   CREATE THUMBNAIL
+   CREATE REAL THUMBNAIL
 ========================================================= */
 
-function createThumbnail(game) {
-
+function createThumbnail(
+    game
+) {
 
     const thumbnail =
         document.createElement(
             "div"
         );
 
-
     thumbnail.className =
         "thumbnail";
 
 
-    const fallback =
+    /*
+       Loading animation while
+       the actual game thumbnail
+       downloads.
+    */
+
+    const loading =
         document.createElement(
             "div"
         );
 
-
-    fallback.className =
-        "thumbnail-fallback";
-
-
-    fallback.textContent =
-        "N";
+    loading.className =
+        "thumbnail-loading";
 
 
     thumbnail.appendChild(
-        fallback
+        loading
     );
 
 
-    if (game.image) {
+    /*
+       UBGHyper supplies an image
+       filename/path in game.image.
+    */
 
+    if (
+        game.image
+    ) {
 
         const image =
             document.createElement(
@@ -2053,25 +1863,36 @@ function createThumbnail(game) {
             );
 
 
-        /*
-           UBGHyper image paths are normally
-           stored relative to /assets/.
-        */
-
         let imageURL =
             String(
                 game.image
             );
 
 
+        /*
+           If UBGHyper already gives
+           us a full URL, use it.
+
+           Otherwise build the
+           UBGHyper assets URL.
+        */
+
         if (
-            !imageURL.startsWith(
-                "http"
+            imageURL.startsWith(
+                "http://"
+            )
+            ||
+            imageURL.startsWith(
+                "https://"
             )
         ) {
 
+            image.src =
+                imageURL;
 
-            imageURL =
+        } else {
+
+            image.src =
 
                 "https://ubghyper.github.io/assets/" +
 
@@ -2083,10 +1904,6 @@ function createThumbnail(game) {
         }
 
 
-        image.src =
-            imageURL;
-
-
         image.alt =
             game.name || "Game";
 
@@ -2095,23 +1912,159 @@ function createThumbnail(game) {
             "lazy";
 
 
-        image.onload = () => {
+        image.onload =
+            () => {
 
-            fallback.style.display =
-                "none";
+                image.classList.add(
+                    "loaded"
+                );
 
-        };
+                loading.remove();
+
+            };
 
 
-        image.onerror = () => {
+        image.onerror =
+            () => {
 
-            image.remove();
+                /*
+                   Try common thumbnail
+                   locations before giving
+                   up.
+                */
 
-        };
+                const alternatives = [
+
+                    "https://ubghyper.github.io/assets/images/" +
+                    imageURL.replace(/^\/+/, ""),
+
+                    "https://ubghyper.github.io/assets/game-images/" +
+                    imageURL.replace(/^\/+/, ""),
+
+                    "https://ubghyper.github.io/assets/thumbnails/" +
+                    imageURL.replace(/^\/+/, "")
+
+                ];
+
+
+                const next =
+                    alternatives.shift();
+
+
+                if (
+                    next &&
+                    image.src !== next
+                ) {
+
+                    image.src =
+                        next;
+
+                } else {
+
+                    loading.remove();
+
+                    /*
+                       Use the game's actual
+                       name as a subtle fallback
+                       rather than showing "N".
+                    */
+
+                    const fallback =
+                        document.createElement(
+                            "div"
+                        );
+
+                    fallback.style.cssText = `
+
+                        position:absolute;
+                        inset:0;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        padding:20px;
+                        text-align:center;
+                        font-size:18px;
+                        font-weight:800;
+                        color:rgba(255,255,255,.35);
+                        background:
+                            radial-gradient(
+                                circle at 30% 30%,
+                                rgba(141,124,255,.25),
+                                transparent 55%
+                            ),
+                            linear-gradient(
+                                135deg,
+                                #11111a,
+                                #211c3b
+                            );
+
+                    `;
+
+                    fallback.textContent =
+                        game.name || "Game";
+
+
+                    thumbnail.appendChild(
+                        fallback
+                    );
+
+
+                    image.remove();
+
+                }
+
+            };
 
 
         thumbnail.appendChild(
             image
+        );
+
+    } else {
+
+        loading.remove();
+
+
+        const fallback =
+            document.createElement(
+                "div"
+            );
+
+
+        fallback.style.cssText = `
+
+            position:absolute;
+            inset:0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+            text-align:center;
+            font-size:18px;
+            font-weight:800;
+            color:rgba(255,255,255,.35);
+
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(141,124,255,.25),
+                    transparent 55%
+                ),
+                linear-gradient(
+                    135deg,
+                    #11111a,
+                    #211c3b
+                );
+
+        `;
+
+
+        fallback.textContent =
+            game.name || "Game";
+
+
+        thumbnail.appendChild(
+            fallback
         );
 
     }
@@ -2128,25 +2081,27 @@ function createThumbnail(game) {
 
 function renderGames() {
 
-
     gameGrid.innerHTML =
         "";
-
 
     let gamesToShow =
         [];
 
 
-    /* SEARCH */
+    /*
+       SEARCH
+    */
 
     if (
 
-        currentCategory === "All" &&
+        currentCategory ===
+        "All"
+
+        &&
 
         searching
 
     ) {
-
 
         const query =
             search.value
@@ -2158,19 +2113,20 @@ function renderGames() {
             allGames.filter(
                 game => {
 
-
                     const name =
-
                         String(
-                            game.name || ""
-                        ).toLowerCase();
+                            game.name ||
+                            ""
+                        )
+                        .toLowerCase();
 
 
                     const description =
-
                         String(
-                            game.gamedesc || ""
-                        ).toLowerCase();
+                            game.gamedesc ||
+                            ""
+                        )
+                        .toLowerCase();
 
 
                     const tags =
@@ -2181,13 +2137,13 @@ function renderGames() {
 
                             ?
 
-                            game.tags
-                                .join(" ")
-                                .toLowerCase()
+                        game.tags
+                            .join(" ")
+                            .toLowerCase()
 
                             :
 
-                            "";
+                        "";
 
 
                     return (
@@ -2220,7 +2176,9 @@ function renderGames() {
     }
 
 
-    /* CATEGORY */
+    /*
+       CATEGORY
+    */
 
     else {
 
@@ -2245,10 +2203,8 @@ function renderGames() {
 
 
             gamesToShow =
-
                 allGames.filter(
                     game => {
-
 
                         if (
                             !Array.isArray(
@@ -2262,7 +2218,6 @@ function renderGames() {
 
 
                         return game.tags.some(
-
                             tag =>
 
                                 String(tag)
@@ -2291,16 +2246,17 @@ function renderGames() {
         " games";
 
 
-    /* NO RESULTS */
+    /*
+       NO RESULTS
+    */
 
     if (
-        gamesToShow.length === 0
+        gamesToShow.length ===
+        0
     ) {
-
 
         noResults.style.display =
             "block";
-
 
         return;
 
@@ -2311,7 +2267,9 @@ function renderGames() {
         "none";
 
 
-    /* CREATE CARDS */
+    /*
+       GAME CARDS
+    */
 
     gamesToShow.forEach(
         game => {
@@ -2327,7 +2285,9 @@ function renderGames() {
                 "game-card";
 
 
-            /* THUMBNAIL */
+            /*
+               REAL THUMBNAIL
+            */
 
             card.appendChild(
                 createThumbnail(
@@ -2336,7 +2296,9 @@ function renderGames() {
             );
 
 
-            /* INFO */
+            /*
+               INFO
+            */
 
             const info =
                 document.createElement(
@@ -2352,9 +2314,7 @@ function renderGames() {
                 Array.isArray(
                     game.tags
                 )
-
-                    &&
-
+                &&
                 game.tags.length
 
                     ?
@@ -2507,7 +2467,9 @@ search.addEventListener(
    LAUNCH GAME
 ========================================================= */
 
-async function launchGame(game) {
+async function launchGame(
+    game
+) {
 
 
     lastCategory =
@@ -2537,12 +2499,6 @@ async function launchGame(game) {
     frame.src =
         gameURL;
 
-
-    /*
-       The request happens directly from
-       the user's button click, allowing
-       the browser to approve fullscreen.
-    */
 
     try {
 
@@ -2623,15 +2579,8 @@ backButton.addEventListener(
 
 
 /* =========================================================
-   FULLSCREEN DETECTION
+   ESC / FULLSCREEN DETECTION
 ========================================================= */
-
-/*
-   When the player presses ESC or otherwise
-   leaves fullscreen, NOVA immediately
-   returns them to the category they were
-   browsing.
-*/
 
 document.addEventListener(
     "fullscreenchange",
