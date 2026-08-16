@@ -2,22 +2,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NOVA.</title>
 
 <style>
-
-/* =========================================================
-   NOVA — GLOBAL
-========================================================= */
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050508;
+    --card: rgba(255,255,255,.055);
+    --border: rgba(255,255,255,.09);
+    --muted: rgba(255,255,255,.42);
+    --purple: #8d7cff;
 }
 
 html {
@@ -25,6 +27,9 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: white;
     font-family:
         Inter,
         -apple-system,
@@ -32,176 +37,129 @@ body {
         "Segoe UI",
         Arial,
         sans-serif;
-
-    background: #050508;
-    color: white;
-
-    min-height: 100vh;
-
     overflow-x: hidden;
 }
 
-/* =========================================================
-   ANIMATED BACKGROUND
-========================================================= */
+/* =====================================================
+   BACKGROUND
+===================================================== */
 
 .background {
     position: fixed;
     inset: 0;
-
     z-index: -10;
-
     overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 15% 20%,
-            rgba(103, 78, 255, .20),
+            circle at 15% 15%,
+            rgba(105,80,255,.22),
             transparent 30%
         ),
-
         radial-gradient(
-            circle at 85% 25%,
-            rgba(0, 204, 255, .13),
+            circle at 85% 20%,
+            rgba(0,210,255,.12),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 50% 100%,
-            rgba(176, 64, 255, .15),
+            rgba(180,70,255,.14),
             transparent 35%
         ),
-
         #050508;
 }
 
 .background::before {
     content: "";
-
     position: absolute;
 
-    width: 750px;
-    height: 750px;
+    width: 700px;
+    height: 700px;
 
-    left: -250px;
-    top: -250px;
+    left: -300px;
+    top: -300px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(115, 85, 255, .18),
+            rgba(110,85,255,.18),
             transparent 68%
         );
 
     filter: blur(30px);
 
     animation:
-        orbOne 18s ease-in-out infinite alternate;
+        orb1 18s ease-in-out infinite alternate;
 }
 
 .background::after {
     content: "";
-
     position: absolute;
 
     width: 650px;
     height: 650px;
 
     right: -250px;
-    bottom: -200px;
+    bottom: -250px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(0, 190, 255, .12),
+            rgba(0,190,255,.12),
             transparent 68%
         );
 
     filter: blur(35px);
 
     animation:
-        orbTwo 21s ease-in-out infinite alternate;
+        orb2 20s ease-in-out infinite alternate;
 }
 
-@keyframes orbOne {
-
+@keyframes orb1 {
     0% {
-        transform:
-            translate(0,0)
-            scale(1);
+        transform: translate(0,0) scale(1);
     }
 
     50% {
-        transform:
-            translate(500px,350px)
-            scale(1.35);
+        transform: translate(500px,350px) scale(1.3);
     }
 
     100% {
-        transform:
-            translate(900px,-100px)
-            scale(.9);
+        transform: translate(850px,-50px) scale(.9);
     }
 }
 
-@keyframes orbTwo {
-
+@keyframes orb2 {
     0% {
-        transform:
-            translate(0,0)
-            scale(1);
+        transform: translate(0,0) scale(1);
     }
 
     50% {
-        transform:
-            translate(-500px,-300px)
-            scale(1.3);
+        transform: translate(-450px,-250px) scale(1.3);
     }
 
     100% {
-        transform:
-            translate(-200px,-600px)
-            scale(.8);
+        transform: translate(-150px,-600px) scale(.85);
     }
 }
-
-/* =========================================================
-   STARS
-========================================================= */
 
 .stars {
     position: fixed;
     inset: 0;
-
     z-index: -9;
 
     pointer-events: none;
 
-    opacity: .32;
+    opacity: .3;
 
     background-image:
-
-        radial-gradient(
-            circle,
-            white 1px,
-            transparent 1px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.7) 1px,
-            transparent 1px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.4) 1px,
-            transparent 1px
-        );
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.35) 1px, transparent 1px);
 
     background-size:
         130px 130px,
@@ -210,15 +168,13 @@ body {
 
     background-position:
         0 0,
-        40px 80px,
+        40px 70px,
         100px 20px;
 
-    animation:
-        starsMove 40s linear infinite;
+    animation: stars 40s linear infinite;
 }
 
-@keyframes starsMove {
-
+@keyframes stars {
     from {
         transform: translateY(0);
     }
@@ -228,117 +184,83 @@ body {
     }
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* =====================================================
+   NAV
+===================================================== */
 
 .navbar {
-
     height: 72px;
 
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding:
-        0 clamp(20px, 7vw, 100px);
-
     position: sticky;
-
     top: 0;
-
     z-index: 100;
 
-    background:
-        rgba(5,5,9,.68);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 clamp(20px,7vw,100px);
+
+    background: rgba(5,5,8,.7);
 
     border-bottom:
         1px solid rgba(255,255,255,.07);
 
-    backdrop-filter:
-        blur(20px);
-
-    -webkit-backdrop-filter:
-        blur(20px);
+    backdrop-filter: blur(20px);
 }
 
 .logo {
-
     font-size: 22px;
-
     font-weight: 900;
-
     letter-spacing: -1px;
 }
 
 .logo span {
-
-    color: #8c78ff;
+    color: var(--purple);
 }
 
-.nav-status {
-
+.status {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
 
-    font-size: 12px;
+    color: rgba(255,255,255,.4);
 
-    color:
-        rgba(255,255,255,.42);
+    font-size: 11px;
+    letter-spacing: 1px;
 }
 
 .status-dot {
-
     width: 7px;
     height: 7px;
 
     border-radius: 50%;
 
-    background: #7dffb2;
+    background: #71ffae;
 
     box-shadow:
-        0 0 12px rgba(125,255,178,.8);
+        0 0 12px rgba(113,255,174,.8);
 }
 
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero {
-
-    min-height: 390px;
+    min-height: 400px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
-    padding:
-        70px 20px 50px;
+    padding: 70px 20px 50px;
 }
 
 .badge {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    padding:
-        8px 14px;
+    padding: 8px 14px;
 
     border:
         1px solid rgba(255,255,255,.1);
@@ -353,16 +275,12 @@ body {
 
     font-size: 12px;
 
-    margin-bottom: 24px;
-
-    backdrop-filter:
-        blur(12px);
+    margin-bottom: 25px;
 }
 
 .hero h1 {
-
     font-size:
-        clamp(55px, 10vw, 100px);
+        clamp(55px,10vw,100px);
 
     line-height: .86;
 
@@ -371,9 +289,9 @@ body {
     background:
         linear-gradient(
             110deg,
-            #ffffff 0%,
-            #b9afff 45%,
-            #ffffff 75%
+            #fff,
+            #b8afff,
+            #fff
         );
 
     background-size: 200% auto;
@@ -383,125 +301,109 @@ body {
 
     color: transparent;
 
-    animation:
-        titleShine 5s linear infinite;
+    animation: shine 5s linear infinite;
 }
 
-@keyframes titleShine {
-
+@keyframes shine {
     to {
-        background-position:
-            200% center;
+        background-position: 200% center;
     }
 }
 
 .hero p {
-
-    max-width: 600px;
+    max-width: 620px;
 
     margin-top: 25px;
 
-    line-height: 1.7;
+    color: var(--muted);
 
     font-size: 14px;
 
-    color:
-        rgba(255,255,255,.42);
+    line-height: 1.7;
 }
 
-/* =========================================================
+/* =====================================================
    SEARCH
-========================================================= */
+===================================================== */
 
-.search-wrapper {
+.search-wrap {
+    width: min(650px,90%);
 
-    width:
-        min(620px, 90%);
-
-    margin:
-        0 auto 35px;
+    margin: 0 auto 35px;
 
     position: relative;
 }
 
 .search-icon {
-
     position: absolute;
 
     left: 17px;
-
     top: 50%;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
     color:
         rgba(255,255,255,.35);
 
-    font-size: 15px;
+    pointer-events: none;
 }
 
-.search {
-
+#search {
     width: 100%;
-
-    height: 52px;
+    height: 53px;
 
     padding:
-        0 20px 0 46px;
+        0 20px 0 45px;
 
     border-radius: 15px;
 
     border:
-        1px solid rgba(255,255,255,.09);
-
-    outline: none;
+        1px solid rgba(255,255,255,.1);
 
     background:
         rgba(255,255,255,.055);
 
     color: white;
 
+    outline: none;
+
     font-size: 14px;
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter: blur(18px);
 
-    transition:
-        .25s ease;
+    transition: .25s;
 }
 
-.search::placeholder {
-
+#search::placeholder {
     color:
-        rgba(255,255,255,.30);
+        rgba(255,255,255,.3);
 }
 
-.search:focus {
-
+#search:focus {
     border-color:
-        rgba(143,124,255,.5);
+        rgba(141,124,255,.55);
 
     box-shadow:
         0 0 0 4px
-        rgba(143,124,255,.07);
+        rgba(141,124,255,.07);
 }
 
-/* =========================================================
-   CATEGORY BAR
-========================================================= */
+#search.disabled {
+    opacity: .5;
+}
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
 
 .category-area {
-
-    width:
-        min(1200px, 94%);
+    width: min(1250px,94%);
 
     margin:
-        0 auto 40px;
+        0 auto 35px;
 }
 
 .categories {
-
     display: flex;
 
     gap: 8px;
@@ -509,15 +411,13 @@ body {
     overflow-x: auto;
 
     padding:
-        5px 2px 12px;
+        4px 2px 12px;
 
     scrollbar-width: thin;
 }
 
 .category {
-
-    flex:
-        0 0 auto;
+    flex: 0 0 auto;
 
     border:
         1px solid rgba(255,255,255,.08);
@@ -537,12 +437,10 @@ body {
 
     cursor: pointer;
 
-    transition:
-        .2s ease;
+    transition: .2s;
 }
 
 .category:hover {
-
     color: white;
 
     background:
@@ -550,37 +448,28 @@ body {
 }
 
 .category.active {
-
     color: white;
 
     background:
-        rgba(135,115,255,.17);
+        rgba(141,124,255,.17);
 
     border-color:
-        rgba(145,125,255,.45);
-
-    box-shadow:
-        0 0 20px
-        rgba(120,100,255,.08);
+        rgba(141,124,255,.45);
 }
 
-/* =========================================================
+/* =====================================================
    GAME SECTION
-========================================================= */
+===================================================== */
 
-.games-section {
+.games {
+    width: min(1250px,94%);
 
-    width:
-        min(1200px, 94%);
-
-    margin:
-        0 auto;
+    margin: 0 auto;
 
     padding-bottom: 100px;
 }
 
 .section-header {
-
     display: flex;
 
     align-items: center;
@@ -591,48 +480,43 @@ body {
 }
 
 .section-title {
-
     font-size: 20px;
-
     font-weight: 700;
 }
 
 .game-count {
+    color:
+        rgba(255,255,255,.3);
 
     font-size: 12px;
-
-    color:
-        rgba(255,255,255,.32);
 }
 
-/* =========================================================
-   GAME GRID
-========================================================= */
+/* =====================================================
+   GRID
+===================================================== */
 
 .game-grid {
-
     display: grid;
 
     grid-template-columns:
         repeat(
             auto-fill,
-            minmax(220px, 1fr)
+            minmax(220px,1fr)
         );
 
     gap: 16px;
 }
 
-/* =========================================================
-   GAME CARD
-========================================================= */
+/* =====================================================
+   CARD
+===================================================== */
 
 .game-card {
-
     position: relative;
 
-    min-height: 210px;
+    min-height: 250px;
 
-    padding: 22px;
+    overflow: hidden;
 
     border-radius: 18px;
 
@@ -646,75 +530,61 @@ body {
             rgba(255,255,255,.025)
         );
 
-    overflow: hidden;
-
     transition:
         transform .28s ease,
-        border .28s ease,
+        border-color .28s ease,
         box-shadow .28s ease;
 
-    backdrop-filter:
-        blur(14px);
-}
-
-.game-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 170px;
-    height: 170px;
-
-    right: -80px;
-    top: -80px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(120,100,255,.10);
-
-    filter: blur(20px);
-
-    transition:
-        .4s ease;
+    backdrop-filter: blur(14px);
 }
 
 .game-card:hover {
-
-    transform:
-        translateY(-6px);
+    transform: translateY(-6px);
 
     border-color:
-        rgba(145,125,255,.35);
+        rgba(141,124,255,.4);
 
     box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.32);
+        0 20px 50px rgba(0,0,0,.35);
 }
 
-.game-card:hover::after {
+.game-image {
+    width: 100%;
+    height: 125px;
 
-    transform:
-        scale(1.5);
+    object-fit: cover;
+
+    display: block;
+
+    background:
+        linear-gradient(
+            135deg,
+            #11111a,
+            #252038
+        );
+
+    opacity: .8;
+
+    transition: .3s;
 }
 
-.game-number {
+.game-card:hover .game-image {
+    opacity: 1;
 
-    font-size: 11px;
+    transform: scale(1.03);
+}
 
-    color:
-        rgba(255,255,255,.28);
-
-    margin-bottom: 25px;
+.game-info {
+    padding: 16px;
 }
 
 .game-category {
-
     display: inline-block;
 
     padding:
         5px 8px;
+
+    margin-bottom: 9px;
 
     border-radius: 7px;
 
@@ -722,142 +592,170 @@ body {
         rgba(255,255,255,.055);
 
     color:
-        rgba(255,255,255,.42);
+        rgba(255,255,255,.45);
 
-    font-size: 10px;
+    font-size: 9px;
 
-    margin-bottom: 12px;
+    text-transform: uppercase;
 }
 
-.game-card h3 {
+.game-name {
+    font-size: 17px;
 
-    font-size: 20px;
+    font-weight: 700;
 
-    margin-bottom: 8px;
+    white-space: nowrap;
 
-    letter-spacing:
-        -.3px;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    margin-bottom: 6px;
 }
 
-.game-card p {
-
+.game-desc {
     color:
-        rgba(255,255,255,.37);
+        rgba(255,255,255,.35);
 
-    font-size: 12px;
+    font-size: 11px;
 
-    line-height: 1.5;
+    line-height: 1.45;
 
-    min-height: 36px;
+    height: 32px;
 
-    margin-bottom: 20px;
+    overflow: hidden;
+
+    margin-bottom: 13px;
 }
 
-.play-button {
+.play {
+    width: 100%;
+
+    padding: 9px;
 
     border: none;
+
+    border-radius: 9px;
 
     background: white;
 
     color: #07070a;
 
-    padding:
-        10px 16px;
-
-    border-radius: 9px;
-
-    font-size: 12px;
-
     font-weight: 800;
+
+    font-size: 11px;
 
     cursor: pointer;
 
-    transition:
-        .2s ease;
+    transition: .2s;
 }
 
-.play-button:hover {
-
-    transform:
-        scale(1.04);
-
-    box-shadow:
-        0 7px 25px
-        rgba(255,255,255,.12);
+.play:hover {
+    transform: scale(1.02);
 }
 
-/* =========================================================
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.35);
+}
+
+.loader {
+    width: 30px;
+    height: 30px;
+
+    margin:
+        0 auto 15px;
+
+    border:
+        3px solid rgba(255,255,255,.1);
+
+    border-top-color:
+        var(--purple);
+
+    border-radius: 50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =====================================================
    NO RESULTS
-========================================================= */
+===================================================== */
 
 .no-results {
-
     display: none;
 
     text-align: center;
 
-    padding:
-        80px 20px;
+    padding: 90px 20px;
 
     color:
         rgba(255,255,255,.35);
 }
 
 .no-results h2 {
-
     color:
         rgba(255,255,255,.7);
 
     margin-bottom: 8px;
 }
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer {
+    padding: 35px 20px;
 
-    padding:
-        35px 20px;
+    text-align: center;
 
     border-top:
         1px solid rgba(255,255,255,.06);
 
-    text-align: center;
-
-    font-size: 11px;
-
     color:
         rgba(255,255,255,.25);
+
+    font-size: 11px;
 }
 
-/* =========================================================
-   FULLSCREEN GAME VIEWER
-========================================================= */
+/* =====================================================
+   GAME VIEWER
+===================================================== */
 
 #gameViewer {
-
     position: fixed;
 
     inset: 0;
 
+    z-index: 999999;
+
     width: 100vw;
     height: 100vh;
 
-    background: #000;
-
-    z-index: 999999;
-
     display: none;
+
+    background: #000;
 }
 
 #gameViewer.active {
-
     display: block;
 }
 
 #gameFrame {
-
     position: absolute;
 
     inset: 0;
@@ -870,112 +768,91 @@ footer {
     background: #000;
 }
 
-/* =========================================================
-   GAME EXIT BUTTON
-========================================================= */
+/*
+   Tiny emergency back button.
 
-.back-button {
+   It stays almost invisible until hovered.
+*/
 
+#backButton {
     position: fixed;
 
-    top: 15px;
-    left: 15px;
+    top: 14px;
+    left: 14px;
 
     z-index: 1000000;
+
+    padding: 8px 12px;
+
+    border-radius: 9px;
 
     border:
         1px solid rgba(255,255,255,.12);
 
     background:
-        rgba(8,8,12,.72);
+        rgba(8,8,12,.7);
 
     color: white;
 
-    padding:
-        9px 13px;
+    font-size: 11px;
 
-    border-radius: 9px;
-
-    font-size: 12px;
+    opacity: .15;
 
     cursor: pointer;
 
-    opacity: .25;
+    backdrop-filter: blur(12px);
 
-    backdrop-filter:
-        blur(15px);
-
-    transition:
-        .25s ease;
+    transition: .2s;
 }
 
-.back-button:hover {
-
+#backButton:hover {
     opacity: 1;
 }
 
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
 @media(max-width:700px) {
 
     .navbar {
-
-        padding:
-            0 20px;
+        padding: 0 20px;
     }
 
-    .nav-status {
-
+    .status {
         display: none;
     }
 
     .hero h1 {
-
-        letter-spacing:
-            -4px;
+        letter-spacing: -4px;
     }
 
     .game-grid {
-
         grid-template-columns:
             repeat(
                 auto-fill,
-                minmax(170px,1fr)
+                minmax(165px,1fr)
             );
     }
 
     .game-card {
-
-        min-height:
-            195px;
-
-        padding:
-            18px;
+        min-height: 235px;
     }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
-<!-- =======================================================
-     BACKGROUND
-======================================================= -->
-
 <div class="background"></div>
-
 <div class="stars"></div>
 
 
-<!-- =======================================================
-     NAVIGATION
-======================================================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <nav class="navbar">
 
@@ -983,20 +860,17 @@ footer {
         NOVA<span>.</span>
     </div>
 
-    <div class="nav-status">
-
-        <div class="status-dot"></div>
-
+    <div class="status">
+        <span class="status-dot"></span>
         ONLINE
-
     </div>
 
 </nav>
 
 
-<!-- =======================================================
+<!-- =====================================================
      HERO
-======================================================= -->
+===================================================== -->
 
 <section class="hero">
 
@@ -1010,19 +884,18 @@ footer {
     </h1>
 
     <p>
-        Discover games across every genre.
-        Choose a category, find something you like,
-        and launch straight into the action.
+        Hundreds of games. Every genre.
+        One clean place to play.
     </p>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      SEARCH
-======================================================= -->
+===================================================== -->
 
-<div class="search-wrapper">
+<div class="search-wrap">
 
     <div class="search-icon">
         ⌕
@@ -1030,7 +903,6 @@ footer {
 
     <input
         id="search"
-        class="search"
         type="text"
         placeholder="Search all games..."
         autocomplete="off"
@@ -1039,9 +911,9 @@ footer {
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      CATEGORIES
-======================================================= -->
+===================================================== -->
 
 <div class="category-area">
 
@@ -1053,11 +925,11 @@ footer {
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      GAMES
-======================================================= -->
+===================================================== -->
 
-<section class="games-section">
+<section class="games">
 
     <div class="section-header">
 
@@ -1071,7 +943,8 @@ footer {
         <div
             class="game-count"
             id="gameCount"
-        ></div>
+        >
+        </div>
 
     </div>
 
@@ -1079,7 +952,17 @@ footer {
     <div
         class="game-grid"
         id="gameGrid"
-    ></div>
+    >
+
+        <div class="loading">
+
+            <div class="loader"></div>
+
+            Loading NOVA library...
+
+        </div>
+
+    </div>
 
 
     <div
@@ -1088,7 +971,7 @@ footer {
     >
 
         <h2>
-            Nothing found
+            No games found
         </h2>
 
         <p>
@@ -1102,19 +985,18 @@ footer {
 
 <footer>
 
-    NOVA © 2026 · Built for fun
+    NOVA © 2026 · Game library powered by dynamic game data
 
 </footer>
 
 
-<!-- =======================================================
+<!-- =====================================================
      FULLSCREEN GAME VIEWER
-======================================================= -->
+===================================================== -->
 
 <div id="gameViewer">
 
     <button
-        class="back-button"
         id="backButton"
     >
         ← Back to NOVA
@@ -1131,160 +1013,30 @@ footer {
 
 <script>
 
-/* =========================================================
-   NOVA GAME DATABASE
-========================================================= */
+/* =====================================================
+   CONFIGURATION
+===================================================== */
 
-const games = [
+/*
+   UBGHyper's live game database.
 
-    {
-        name: "Eaglercraft",
-        category: "Sandbox",
-        description: "Minecraft in your browser.",
-        url: "YOUR_EAGLERCRAFT_URL_HERE"
-    },
+   NOVA reads this automatically, meaning you
+   don't have to manually add hundreds of games.
+*/
 
-    {
-        name: "Among Us",
-        category: "Multiplayer",
-        description: "Find the impostor.",
-        url: "https://ubghyper.github.io/games/AmongUs-Online.html"
-    },
-
-    {
-        name: "Drive Mad",
-        category: "Racing",
-        description: "Drive through impossible obstacles.",
-        url: "https://ubghyper.github.io/games/Drive-Mad.html"
-    },
-
-    {
-        name: "Slope",
-        category: "Action",
-        description: "Roll through the endless neon track.",
-        url: "https://ubghyper.github.io/games/Slope.html"
-    },
-
-    {
-        name: "Run 3",
-        category: "Platformer",
-        description: "Run through the endless tunnel.",
-        url: "https://ubghyper.github.io/games/Run-3.html"
-    },
-
-    {
-        name: "Retro Bowl",
-        category: "Sports",
-        description: "Build your football dynasty.",
-        url: "https://ubghyper.github.io/games/Retro-Bowl.html"
-    },
-
-    {
-        name: "FNAF",
-        category: "Horror",
-        description: "Survive the night.",
-        url: "https://ubghyper.github.io/games/Five-Nights-at-Freddys.html"
-    },
-
-    {
-        name: "Cookie Clicker",
-        category: "Idle",
-        description: "Make an absurd amount of cookies.",
-        url: "https://ubghyper.github.io/games/Cookie-Clicker.html"
-    },
-
-    {
-        name: "2048",
-        category: "Puzzle",
-        description: "Combine tiles and reach 2048.",
-        url: "https://ubghyper.github.io/games/2048.html"
-    },
-
-    {
-        name: "Stickman Hook",
-        category: "Arcade",
-        description: "Swing your way through the levels.",
-        url: "https://ubghyper.github.io/games/Stickman-Hook.html"
-    },
-
-    {
-        name: "Territorial.io",
-        category: "Strategy",
-        description: "Expand your territory.",
-        url: "https://ubghyper.github.io/games/Territorial.html"
-    },
-
-    {
-        name: "Minecraft",
-        category: "Sandbox",
-        description: "Build and explore.",
-        url: "https://ubghyper.github.io/games/Minecraft-1.12.html"
-    },
-
-    {
-        name: "Superhot",
-        category: "Shooter",
-        description: "Time moves when you move.",
-        url: "https://ubghyper.github.io/games/Superhot.html"
-    },
-
-    {
-        name: "Cuphead",
-        category: "Adventure",
-        description: "Fight your way through wild bosses.",
-        url: "https://ubghyper.github.io/games/Cuphead.html"
-    },
-
-    {
-        name: "Stick Empires",
-        category: "Fighting",
-        description: "Lead your stick army.",
-        url: "https://ubghyper.github.io/games/Stick-Empires.html"
-    },
-
-    {
-        name: "BitLife",
-        category: "Simulation",
-        description: "Live an entire virtual life.",
-        url: "https://ubghyper.github.io/games/Bitlife.html"
-    },
-
-    {
-        name: "Happy Wheels",
-        category: "Physics",
-        description: "Physics-based obstacle chaos.",
-        url: "https://ubghyper.github.io/games/Happy-Wheels.html"
-    },
-
-    {
-        name: "Undertale",
-        category: "RPG",
-        description: "An unforgettable RPG adventure.",
-        url: "https://ubghyper.github.io/games/Undertale.html"
-    },
-
-    {
-        name: "Geometry Dash Lite",
-        category: "Rhythm",
-        description: "Jump, fly and survive the beat.",
-        url: "https://ubghyper.github.io/games/Geometry-Dash-Lite.html"
-    },
-
-    {
-        name: "Crossy Road",
-        category: "Comedy",
-        description: "Cross the road without getting crushed.",
-        url: "https://ubghyper.github.io/games/Crossy-Road.html"
-    }
-
-];
+const GAME_DATABASE =
+    "https://ubghyper.github.io/assets/games.json";
 
 
-/* =========================================================
-   CATEGORIES
-========================================================= */
+const GAME_BASE =
+    "https://ubghyper.github.io/games/";
 
-const categories = [
+
+/*
+   Your requested categories.
+*/
+
+const CATEGORIES = [
 
     "All",
     "Action",
@@ -1311,11 +1063,11 @@ const categories = [
 ];
 
 
-/* =========================================================
+/* =====================================================
    ELEMENTS
-========================================================= */
+===================================================== */
 
-const categoryContainer =
+const categoryBox =
     document.getElementById("categories");
 
 const gameGrid =
@@ -1327,38 +1079,40 @@ const gameCount =
 const sectionTitle =
     document.getElementById("sectionTitle");
 
-const noResults =
-    document.getElementById("noResults");
-
 const search =
     document.getElementById("search");
 
-const gameViewer =
+const noResults =
+    document.getElementById("noResults");
+
+const viewer =
     document.getElementById("gameViewer");
 
-const gameFrame =
+const frame =
     document.getElementById("gameFrame");
 
 const backButton =
     document.getElementById("backButton");
 
 
-/* =========================================================
-   CURRENT STATE
-========================================================= */
+/* =====================================================
+   STATE
+===================================================== */
+
+let allGames = [];
 
 let currentCategory = "All";
 
-let searchMode = false;
-
 let lastCategory = "All";
 
+let searching = false;
 
-/* =========================================================
-   BUILD CATEGORY BUTTONS
-========================================================= */
 
-categories.forEach(category => {
+/* =====================================================
+   BUILD CATEGORIES
+===================================================== */
+
+CATEGORIES.forEach(category => {
 
     const button =
         document.createElement("button");
@@ -1370,39 +1124,159 @@ categories.forEach(category => {
         category;
 
     if (category === "All") {
-
         button.classList.add("active");
-
     }
 
-    button.onclick = () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        selectCategory(category);
+            selectCategory(category);
 
-    };
+        }
+    );
 
-    categoryContainer.appendChild(button);
+    categoryBox.appendChild(button);
 
 });
 
 
-/* =========================================================
-   SELECT CATEGORY
-========================================================= */
+/* =====================================================
+   LOAD COMPLETE UBGHYPER LIBRARY
+===================================================== */
+
+async function loadGames() {
+
+    try {
+
+        const response =
+            await fetch(
+                GAME_DATABASE,
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+            throw new Error(
+                "Could not load game database."
+            );
+        }
+
+
+        const data =
+            await response.json();
+
+
+        /*
+           Keep EVERY entry.
+
+           We intentionally do NOT remove
+           "broken" or "buggy" entries because
+           you asked for ALL of them.
+        */
+
+        allGames =
+            data.filter(
+                game =>
+                    game &&
+                    game.name &&
+                    game.url
+            );
+
+
+        /*
+           Sort alphabetically.
+        */
+
+        allGames.sort(
+            (a,b) =>
+                a.name.localeCompare(b.name)
+        );
+
+
+        renderGames();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        gameGrid.innerHTML = `
+
+            <div class="loading">
+
+                <h2>
+                    Couldn't load the game library.
+                </h2>
+
+                <p style="
+                    margin-top:10px;
+                    color:rgba(255,255,255,.3);
+                ">
+                    Check your internet connection
+                    and try refreshing NOVA.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   CATEGORY SELECTION
+===================================================== */
 
 function selectCategory(category) {
 
     currentCategory =
         category;
 
-    searchMode =
-        false;
-
     lastCategory =
         category;
 
+    searching =
+        false;
+
     search.value =
         "";
+
+
+    /*
+       Enable search only on All.
+    */
+
+    if (category === "All") {
+
+        search.disabled =
+            false;
+
+        search.classList.remove(
+            "disabled"
+        );
+
+        search.placeholder =
+            "Search all games...";
+
+    } else {
+
+        search.disabled =
+            true;
+
+        search.classList.add(
+            "disabled"
+        );
+
+        search.placeholder =
+            "Search is available in All";
+
+    }
+
 
     document
         .querySelectorAll(".category")
@@ -1415,7 +1289,9 @@ function selectCategory(category) {
 
         });
 
+
     renderGames();
+
 
     window.scrollTo({
         top: 0,
@@ -1425,89 +1301,122 @@ function selectCategory(category) {
 }
 
 
-/* =========================================================
+/* =====================================================
    RENDER GAMES
-========================================================= */
+===================================================== */
 
 function renderGames() {
 
     gameGrid.innerHTML = "";
 
-    let visibleGames = [];
+    let gamesToShow = [];
 
 
-    /*
-       SEARCH MODE
+    /* ================================================
+       GLOBAL SEARCH
+    ================================================ */
 
-       Search always searches
-       the complete NOVA library.
-    */
-
-    if (searchMode) {
+    if (
+        currentCategory === "All" &&
+        searching
+    ) {
 
         const query =
             search.value
-                .toLowerCase()
-                .trim();
+                .trim()
+                .toLowerCase();
 
-        visibleGames =
-            games.filter(game =>
-                game.name
-                    .toLowerCase()
-                    .includes(query) ||
 
-                game.category
-                    .toLowerCase()
-                    .includes(query)
-            );
+        gamesToShow =
+            allGames.filter(game => {
+
+                const name =
+                    String(game.name || "")
+                        .toLowerCase();
+
+                const description =
+                    String(game.gamedesc || "")
+                        .toLowerCase();
+
+                const tags =
+                    Array.isArray(game.tags)
+                        ? game.tags.join(" ")
+                            .toLowerCase()
+                        : "";
+
+                return (
+                    name.includes(query) ||
+                    description.includes(query) ||
+                    tags.includes(query)
+                );
+
+            });
+
 
         sectionTitle.textContent =
             "Search Results";
 
     }
 
-    /*
-       NORMAL CATEGORY MODE
-    */
+
+    /* ================================================
+       NORMAL CATEGORY
+    ================================================ */
 
     else {
 
-        if (currentCategory === "All") {
+        if (
+            currentCategory === "All"
+        ) {
 
-            visibleGames =
-                games;
+            gamesToShow =
+                allGames;
 
             sectionTitle.textContent =
                 "All Games";
 
-        }
+        } else {
 
-        else {
+            gamesToShow =
+                allGames.filter(game => {
 
-            visibleGames =
-                games.filter(
-                    game =>
-                        game.category ===
-                        currentCategory
-                );
+                    if (
+                        !Array.isArray(game.tags)
+                    ) {
+                        return false;
+                    }
+
+                    return game.tags.some(
+                        tag =>
+                            String(tag)
+                                .toLowerCase() ===
+                            currentCategory
+                                .toLowerCase()
+                    );
+
+                });
+
 
             sectionTitle.textContent =
                 currentCategory;
+
         }
 
     }
 
 
     gameCount.textContent =
-        visibleGames.length +
+        gamesToShow.length +
         " games";
 
 
-    /*
+    /* ================================================
        NO RESULTS
-    */
+    ================================================ */
 
-    if (visibleGames.length === 0) {
+    if (
+        gamesToShow.length === 0
+    ) {
 
         noResults.style.display =
             "block";
@@ -1516,93 +1425,154 @@ function renderGames() {
 
     }
 
+
     noResults.style.display =
         "none";
 
 
-    /*
+    /* ================================================
        CREATE CARDS
-    */
+    ================================================ */
 
-    visibleGames.forEach(
-        (game, index) => {
-
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "game-card";
+    const fragment =
+        document.createDocumentFragment();
 
 
-            card.innerHTML = `
+    gamesToShow.forEach(game => {
 
-                <div class="game-number">
-                    ${String(index + 1).padStart(2,"0")}
-                </div>
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "game-card";
+
+
+        /*
+           UBGHyper stores the image filename
+           separately from the game URL.
+        */
+
+        let imageURL = "";
+
+        if (game.image) {
+
+            imageURL =
+                "https://ubghyper.github.io/assets/" +
+                encodeURIComponent(game.image);
+
+        }
+
+
+        const firstCategory =
+            Array.isArray(game.tags) &&
+            game.tags.length
+                ? game.tags[0]
+                : "Game";
+
+
+        const description =
+            game.gamedesc ||
+            "Play this game in your browser.";
+
+
+        card.innerHTML = `
+
+            ${
+                imageURL
+                ? `
+                    <img
+                        class="game-image"
+                        src="${imageURL}"
+                        alt=""
+                        loading="lazy"
+                        onerror="
+                            this.style.display='none'
+                        "
+                    >
+                  `
+                : `
+                    <div
+                        class="game-image"
+                    ></div>
+                  `
+            }
+
+            <div class="game-info">
 
                 <div class="game-category">
-                    ${game.category}
+                    ${escapeHTML(firstCategory)}
                 </div>
 
-                <h3>
-                    ${game.name}
-                </h3>
+                <div class="game-name">
+                    ${escapeHTML(game.name)}
+                </div>
 
-                <p>
-                    ${game.description}
-                </p>
+                <div class="game-desc">
+                    ${escapeHTML(description)}
+                </div>
 
                 <button
-                    class="play-button"
-                    onclick='launchGame(${JSON.stringify(game)})'
+                    class="play"
                 >
                     Play →
                 </button>
 
-            `;
+            </div>
+
+        `;
 
 
-            gameGrid.appendChild(card);
+        card
+            .querySelector(".play")
+            .addEventListener(
+                "click",
+                () => launchGame(game)
+            );
 
-        }
-    );
+
+        fragment.appendChild(card);
+
+    });
+
+
+    gameGrid.appendChild(fragment);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    SEARCH
-========================================================= */
+===================================================== */
 
 search.addEventListener(
     "input",
-    function() {
+    () => {
 
         /*
-           Empty search = return to category.
+           Search only works in All.
         */
 
         if (
-            this.value.trim() === ""
+            currentCategory !== "All"
         ) {
-
-            searchMode =
-                false;
-
-            renderGames();
 
             return;
 
         }
 
 
+        const value =
+            search.value.trim();
+
+
         /*
-           Typing anything switches
-           to global search.
+           Don't show "Search Results"
+           until the user actually types.
         */
 
-        searchMode =
-            true;
+        searching =
+            value.length > 0;
+
 
         renderGames();
 
@@ -1610,14 +1580,36 @@ search.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
    LAUNCH GAME
-========================================================= */
+===================================================== */
 
 async function launchGame(game) {
 
     /*
-       Remember where the player came from.
+       Remember category.
+
+       If the user launched from All,
+       they return to All.
+
+       If they launched from Racing,
+       they return to Racing.
     */
 
     lastCategory =
@@ -1625,10 +1617,20 @@ async function launchGame(game) {
 
 
     /*
-       Open viewer.
+       Construct direct UBGHyper game URL.
     */
 
-    gameViewer.classList.add(
+    const gameURL =
+        GAME_BASE +
+        encodeURIComponent(game.url) +
+        ".html";
+
+
+    /*
+       Show viewer.
+    */
+
+    viewer.classList.add(
         "active"
     );
 
@@ -1637,32 +1639,36 @@ async function launchGame(game) {
 
 
     /*
-       Load game.
+       Load game page.
     */
 
-    gameFrame.src =
-        game.url;
+    frame.src =
+        gameURL;
 
 
     /*
-       Attempt real browser fullscreen.
+       Automatically request browser
+       fullscreen.
+
+       This works because launchGame()
+       is called directly by the user's
+       click.
     */
 
     try {
 
         if (
-            !document.fullscreenElement &&
-            gameViewer.requestFullscreen
+            !document.fullscreenElement
         ) {
 
-            await gameViewer.requestFullscreen();
+            await viewer.requestFullscreen();
 
         }
 
     } catch(error) {
 
-        console.log(
-            "Fullscreen permission:",
+        console.warn(
+            "Fullscreen request was denied:",
             error
         );
 
@@ -1671,9 +1677,9 @@ async function launchGame(game) {
 }
 
 
-/* =========================================================
+/* =====================================================
    RETURN TO NOVA
-========================================================= */
+===================================================== */
 
 function returnToNova() {
 
@@ -1681,19 +1687,21 @@ function returnToNova() {
        Stop the game.
     */
 
-    gameFrame.src =
+    frame.src =
         "";
 
 
     /*
-       Close fullscreen if possible.
+       Exit fullscreen if we're still
+       in it.
     */
 
     if (
         document.fullscreenElement
     ) {
 
-        document.exitFullscreen()
+        document
+            .exitFullscreen()
             .catch(() => {});
 
     }
@@ -1703,7 +1711,7 @@ function returnToNova() {
        Hide viewer.
     */
 
-    gameViewer.classList.remove(
+    viewer.classList.remove(
         "active"
     );
 
@@ -1716,19 +1724,6 @@ function returnToNova() {
        the player came from.
     */
 
-    if (
-        searchMode
-    ) {
-
-        searchMode =
-            false;
-
-        search.value =
-            "";
-
-    }
-
-
     selectCategory(
         lastCategory
     );
@@ -1736,41 +1731,35 @@ function returnToNova() {
 }
 
 
-/* =========================================================
-   BACK BUTTON
-========================================================= */
+/* =====================================================
+   FULLSCREEN CHANGE DETECTOR
+=====================================================
 
-backButton.addEventListener(
-    "click",
-    function(event) {
+   This is what makes:
 
-        event.stopPropagation();
+       GAME
+         ↓
+       ESC
+         ↓
+       NOVA
 
-        returnToNova();
-
-    }
-);
-
-
-/* =========================================================
-   DETECT FULLSCREEN EXIT
-=========================================================
-
-   IMPORTANT:
-
-   Browsers always allow ESC to exit
-   fullscreen. We cannot disable that.
-
-   Instead, when fullscreen ends,
-   NOVA immediately comes back.
-========================================================= */
+   happen automatically.
+===================================================== */
 
 document.addEventListener(
     "fullscreenchange",
-    function() {
+    () => {
+
+        /*
+           If the viewer was open but
+           fullscreen has ended, return
+           to NOVA.
+        */
 
         if (
-            gameViewer.classList.contains("active") &&
+            viewer.classList.contains(
+                "active"
+            ) &&
             !document.fullscreenElement
         ) {
 
@@ -1782,55 +1771,25 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   ESCAPE BACKUP
-========================================================= */
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+backButton.addEventListener(
+    "click",
+    () => {
 
-        if (
-            event.key === "Escape" &&
-            gameViewer.classList.contains("active")
-        ) {
-
-            /*
-               Browser will exit fullscreen,
-               triggering fullscreenchange.
-
-               This backup handles browsers
-               that behave differently.
-            */
-
-            setTimeout(
-                () => {
-
-                    if (
-                        gameViewer.classList.contains(
-                            "active"
-                        )
-                    ) {
-
-                        returnToNova();
-
-                    }
-
-                },
-                100
-            );
-
-        }
+        returnToNova();
 
     }
 );
 
 
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
-renderGames();
+loadGames();
 
 </script>
 
